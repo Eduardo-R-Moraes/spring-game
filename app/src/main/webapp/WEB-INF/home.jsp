@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>Olá Spring!!!</h1>
+        <a href="/categorias/list">Categorias</a>
     </body>
 </html>
 
