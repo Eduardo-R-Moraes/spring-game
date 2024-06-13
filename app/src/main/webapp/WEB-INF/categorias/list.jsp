@@ -5,7 +5,6 @@
     <head>
         <meta charset="UTF-8" />
         <title>Categorias</title>
-        <link href="/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="container">

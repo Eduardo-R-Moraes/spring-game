@@ -48,9 +48,10 @@ public class CategoriaController {
         }
 
         return "redirect:/categorias/list";
+
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam("id") long id, @RequestParam("nome") String nome) {
         Optional<Categoria> resultado = categoriaRepo.findById(id);
         
@@ -59,6 +60,26 @@ public class CategoriaController {
             categoriaRepo.save(resultado.get());
         }
 
+        return "redirect:/categorias/list";
+
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable long id, Model ui) {
+        Optional<Categoria> resultado = categoriaRepo.findById(id);
+
+        if(resultado.isPresent()) {
+            ui.addAttribute("categoria", resultado.get());
+            return "/categorias/delete";
+        }
+
+        return "redirect:/categorias/list";
+
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("id") long id) {
+        categoriaRepo.deleteById(id);
         return "redirect:/categorias/list";
     }
 }
