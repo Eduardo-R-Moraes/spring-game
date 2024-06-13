@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import application.models.Categoria;
-import application.repository.categoriaRepository;
+import application.repository.CategoriaRepository;
 
 @Controller
 @RequestMapping("/categorias")
 public class CategoriaController {
     @Autowired
-    private categoriaRepository categoriaRepo;
+    private CategoriaRepository categoriaRepo;
 
     @RequestMapping("/list")
     public String list(Model ui) {

@@ -7,7 +7,11 @@
     </head>
     <body>
         <h1>Olá Spring!!!</h1>
-        <a href="/categorias/list">Categorias</a>
+        <a href="/categorias/list">Categorias</a> 
+        <br>
+        <a href="/jogos/list">Jogos</a>
+        <br>
+        <a href="/plataformas/list">Plataformas</a>
     </body>
 </html>
 

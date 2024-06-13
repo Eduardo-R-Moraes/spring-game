@@ -4,4 +4,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import application.models.Jogo;
 
-public interface jogoRepository extends CrudRepository<Jogo, Long> { } 
+public interface JogoRepository extends CrudRepository<Jogo, Long> { } 
