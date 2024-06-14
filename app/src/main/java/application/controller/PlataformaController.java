@@ -20,18 +20,18 @@ public class PlataformaController {
     private PlataformaRepository plataformaRepo;
 
     @RequestMapping("/list")
-    String list(Model ui) {
+    public String list(Model ui) {
         ui.addAttribute("plataformas", plataformaRepo.findAll());
         return "plataformas/list";
     }
 
     @RequestMapping("/insert")
-    String insert() {
+    public String insert() {
         return "plataformas/insert";
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    String insert(@RequestParam("nome") String nome) {
+    public String insert(@RequestParam("nome") String nome) {
         Plataforma plataforma = new Plataforma();
         plataforma.setNome(nome);
         plataformaRepo.save(plataforma);
@@ -39,7 +39,7 @@ public class PlataformaController {
     }
 
     @RequestMapping("/update/{id}")
-    String update(@PathVariable long id, Model ui) {
+    public String update(@PathVariable long id, Model ui) {
         Optional<Plataforma> resultado = plataformaRepo.findById(id);
 
         if(resultado.isPresent()) {
@@ -52,7 +52,7 @@ public class PlataformaController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    String update(
+    public String update(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome
         ) {
@@ -65,7 +65,7 @@ public class PlataformaController {
         }
 
     @RequestMapping("/delete/{id}")
-    String delete(Model ui, @PathVariable long id) {
+    public String delete(Model ui, @PathVariable long id) {
         Optional<Plataforma> resultado = plataformaRepo.findById(id);
         if(resultado.isPresent()) {
             ui.addAttribute("plataforma", resultado.get());
@@ -75,7 +75,7 @@ public class PlataformaController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    String delete(@RequestParam("id") long id) {
+    public String delete(@RequestParam("id") long id) {
         plataformaRepo.deleteById(id);
         return "redirect:/plataformas/list";
     }

@@ -1,10 +1,13 @@
 package application.models;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,9 @@ public class Plataforma {
 
     @Column(nullable = false)
     private String nome;
+
+    @ManyToMany(mappedBy = "plataformas")
+    private Set<Jogo> jogos;
 
     public long getId() {
         return id;
@@ -29,5 +35,13 @@ public class Plataforma {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Set<Jogo> getJogos() {
+        return jogos;
+    }
     
+    public void setJogos(Set<Jogo> jogos) {
+        this.jogos = jogos;
+    }
+
 }

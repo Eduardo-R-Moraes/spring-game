@@ -12,10 +12,27 @@
     <div class="container">
         <h1>Editar Jogo</h1>
         <form action="/jogos/update" method="post">
-            <input type="hidden" name="id" value="${jogo.id}">
+            <input type="hidden" name="id" value="${jogo.getId()}">
             <div>
                 <label>Nome</label>
-                <input type="text" name="nome" value="${jogo.nome}">
+                <input type="text" name="nome" value="${jogo.getNome()}">
+            </div>
+            <div>
+                <label>Categoria</label>
+                <select name="categoria">
+                    <c:forEach var="c" items="${categorias}">
+                        <option ${jogo.categoria.id == c.id ? "selected" : ""} value="${c.id}">${c.nome}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div>
+                <label>Plataforma(s)</label>
+                <c:forEach var="p" items="${plataformas}">
+                    <div>
+                        <input ${jogo.plataformas.contains(p) ? "checked" : ""} type="checkbox" value="${p.id}" name="plataformas">
+                        <label>${p.nome}</label>
+                    </div>
+                </c:forEach>
             </div>
             <hr>
             <a href="/jogos/list">Voltar</a>

@@ -14,7 +14,24 @@
         <form action="/jogos/insert" method="post">
             <div>
                 <label>Nome</label>
-                <input type="text" name="nome">
+                <input type="text" name="nome" value="${jogo.getNome()}">
+            </div>
+            <div>
+                <label>Categoria</label>
+                <select name="categoria">
+                    <c:forEach var="c" items="${categorias}">
+                        <option value="${c.id}">${c.nome}</option> 
+                    </c:forEach>
+                </select>
+            </div>
+            <div>
+                <label>Plataforma(s)</label>
+                <c:forEach var="p" items="${plataformas}">
+                    <div>
+                        <input type="checkbox" value="${p.id}" name="plataformas">
+                        <label>${p.nome}</label>
+                    </div>
+                </c:forEach>
             </div>
             <hr>
             <a href="/jogos/list">Voltar</a>

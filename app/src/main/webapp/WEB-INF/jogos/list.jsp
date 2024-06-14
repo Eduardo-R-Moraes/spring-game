@@ -16,12 +16,21 @@
             <tr>
                 <th>id</th>
                 <th>nome</th>
+                <th>categoria</th>
+                <th>plataformas</th>
                 <th></th>
             </tr>
             <c:forEach var="j" items="${jogo}">
                 <tr>
-                    <td>${j.id}</td>
-                    <td>${j.nome}</td>
+                    <td>${j.getId()}</td>
+                    <td>${j.getNome()}</td>
+                    <td>${j.getCategoria().nome}</td>
+                    <td>
+                        <c:forEach varStatus="s" var="p" items="${j.plataformas}">
+                            ${s.getCount() > 1 ? " / " : ""}
+                            ${p.nome}
+                        </c:forEach> 
+                    </td>
                     <td>
                         <a href="/jogos/update/${j.id}">Editar</a> |
                         <a href="/jogos/delete/${j.id}">Excluir</a>
